@@ -11,17 +11,18 @@ TRIANGLES = [[int(g) for g in re.search(
     r'\s+(\d+)\s+(\d+)\s+(\d+)', t).group(1, 2, 3)] for t in INPUT.splitlines()]
 
 
-def isTriangle(triangle):
-    for a in range(3):
-        for b in range(a + 1, 3):
-            if triangle[a] + triangle[b] <= triangle[3 - a - b]:
+def is_triangle(triangle: [int, int, int]) -> bool:
+    """Returns true if the given side lengths can form a triangle"""
+    for first in range(3):
+        for second in range(first + 1, 3):
+            if triangle[first] + triangle[second] <= triangle[3 - first - second]:
                 return False
     return True
 
 
-count = sum(int(isTriangle(t)) for t in TRIANGLES)
+COUNT = sum(int(is_triangle(t)) for t in TRIANGLES)
 
-print('Part 1:', count)
+print('Part 1:', COUNT)
 
 # Part 2
 TRIANGLES_VERTICAL = []
@@ -31,6 +32,6 @@ for c in range(3):
         TRIANGLES_VERTICAL.append(
             [TRIANGLES[i][c], TRIANGLES[i + 1][c], TRIANGLES[i + 2][c]])
 
-count = sum(int(isTriangle(t)) for t in TRIANGLES_VERTICAL)
+COUNT = sum(int(is_triangle(t)) for t in TRIANGLES_VERTICAL)
 
-print('Part 2:', count)
+print('Part 2:', COUNT)

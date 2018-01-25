@@ -1,5 +1,5 @@
 """
-http://www.adventofcode.com/2016/day/2
+http://www.adventofcode.com/2016/day/3
 """
 
 import re

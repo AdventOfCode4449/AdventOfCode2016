@@ -8,7 +8,7 @@ input = open('input/09.txt', 'r').read()
 input = re.sub(r'\r?\n', '', input)
 input = re.sub(r'\s+', '', input)
 
-def decodeLength1(string):
+def decodedLength1(string):
     length = len(string)
     index = 0
     while(True):
@@ -19,8 +19,7 @@ def decodeLength1(string):
             length += charcount * (multiplier - 1) - len(match.group())
             index += match.end() + charcount
         else:
-            break
-    return length
+            return length
 
 def decodedLength2(string):
     length = len(string)
@@ -36,5 +35,5 @@ def decodedLength2(string):
             return length
 
 
-print('Part 1:', decompressionlength1(input))
+print('Part 1:', decodedLength1(input))
 print('Part 2:', decodedLength2(input))
